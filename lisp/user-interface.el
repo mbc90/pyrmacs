@@ -11,15 +11,19 @@
 
 (use-package orderless
   :straight t
-  :custom
+  :init
+  (setq completion-styles '(orderless partial-completion basic)
+        completion-category-defaults nil
+        completion-category-overrides nil)
+  ;; :custom
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
   ;; (orderless-component-separator #'orderless-escapable-split-on-space)
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles partial-completion))))
-  (completion-category-defaults nil) ;; Disable defaults, use our settings
-  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
-
+  ;; (completion-styles '(orderless partial-completion basic))
+  ;; (completion-category-overrides '((file (styles partial-completion))))
+  ;; (completion-category-defaults nil) ;; Disable defaults, use our settings
+  ;; (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
+  )
 ;; Enable Consult
 (use-package consult 
   :straight t
@@ -111,6 +115,7 @@
   ;; Vertico.
   (read-extended-command-predicate #'command-completion-default-include-p)
   ;; Do not allow the cursor in the minibuffer prompt
+  (text-mode-ispell-word-completion nil)
   (minibuffer-prompt-properties
   '(read-only t cursor-intangible t face minibuffer-prompt)))
 

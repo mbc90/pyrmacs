@@ -34,4 +34,6 @@
 (require 'keybinds)
 ;; Different settings for diiferent os
 (require 'system)
+;; Programming Stuff
+(require 'programming)
 (put 'downcase-region 'disabled nil)

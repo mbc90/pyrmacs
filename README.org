@@ -1,6 +1,6 @@
 #+TITLE: New Emacs Config
 * Starting Fresh
-My [[https://codeberg.org/mbcc/emacs-config][old config]] is, well, old. I started it a long time ago and based it off of a systems craters video.
+My [[https://codeberg.org/mbcc/emacs-config][old config]] is, well, old. I started it a long time ago and based it off of a systems crafters video.
 I tried to keep everything separated to make it easier, which just blew up in my face. A lot of packages got thrown to
 the wind and settled into random .el files.
 Along with the bloat of a bunch of packages with purposes I didn't have a clue of. Copy and pasting a set-up is a quick
