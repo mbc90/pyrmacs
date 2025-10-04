@@ -34,7 +34,8 @@
 (use-package corfu
   :straight t
   ;; Optional customizations
-  ;; :custom
+  :custom
+  (corfu-auto t)
   ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
@@ -55,8 +56,8 @@
   (global-corfu-mode)
 
   ;; Enable optional extension modes:
-  ;; (corfu-history-mode)
-  ;; (corfu-popupinfo-mode)
+  (corfu-history-mode)
+  (corfu-popupinfo-mode)
   )
 ;;Cape completion
 (use-package cape

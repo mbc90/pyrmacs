@@ -3,16 +3,18 @@
   :straight t
   :custom
   (lsp-completion-provider :none) ;; use corfu, not company
-  :commands (lsp lsp-deferred)
   :init
-  (defun my/lsp-mode-setup-completion ()
-    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-	  '(orderless)))
   (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
-  :hook
-  (lsp-completion-mode . my/lsp-mode-setup-completion)
   :config
-  (lsp-enable-which-key-integration t))
+  (lsp-enable-which-key-integration t)
+  :commands
+  (lsp lsp-deferred))
+;; Force corfu to work!!!
+(add-hook 'lsp-completion-mode-hook
+  (lambda ()
+    (setq-local completion-category-defaults
+                (assoc-delete-all 'lsp-capf completion-category-defaults))))
+
 ;; Rust
 (use-package rust-mode :straight t)
 ;; Hook to load lsp-mode when entering a rust file
