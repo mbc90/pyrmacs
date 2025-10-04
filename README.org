@@ -1,0 +1,28 @@
+#+TITLE: New Emacs Config
+* Starting Fresh
+My [[https://codeberg.org/mbcc/emacs-config][old config]] is, well, old. I started it a long time ago and based it off of a systems craters video.
+I tried to keep everything separated to make it easier, which just blew up in my face. A lot of packages got thrown to
+the wind and settled into random .el files.
+Along with the bloat of a bunch of packages with purposes I didn't have a clue of. Copy and pasting a set-up is a quick
+way to get confused. I replaced a lot of packages and tried to put them in fewer files.
+
+
+* Lisp Files
+These are my main config files, each serving a different purpose
+** keybinds.el
+To store my keybindings in one central place. 
+using the [[https://github.com/emacs-evil/evil][Evil]] mode for vim-emulation and which key to show helpful hints.
+View the file for all keybindings, they are pretty self explanatory. 
+** system.el
+This file is short, used to change some Emacs features like making backup files.
+
+** user-interface.el
+This is the biggest file and change in the new /config/.
+*** Vertico
+This [[https://github.com/minad/vertico][package]] is a completion framework with a few built-ins, the one I use is vertico-directory to make
+find-file better looking. Along with orderless completion style.
+*** Consult
+This [[https://github.com/minad/consul][package]] is an almost one-to-one drop in for counsel, which I replaced for consult, that supports live-viewing for search and
+navigation. It has a lot of other powerful features that I need to explore more.
+*** Corfu
+A light weight popup [[https://github.com/minad/corfu][library]] to make in-buffer completion look better. 
