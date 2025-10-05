@@ -9,8 +9,12 @@
 
 ;; Magit
 (use-package magit :straight t)
+
 ;; Jinx spell check
 (use-package jinx :straight t)
+
+;; tramp for ssh file editing
+(setq tramp-default-method "ssh")
 
 ;; Alternative 2: Enable Jinx per mode
 (dolist (hook '(org-mode-hook text-mode-hook conf-mode-hook))
