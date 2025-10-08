@@ -20,5 +20,8 @@
 ;; Hook to load lsp-mode when entering a rust file
 (add-hook 'rust-mode-hook #'lsp)
 ;;---------
-
+;; Nix
+(use-package nix-mode
+  :straight t
+  :mode "\\.nix\\'")
 (provide 'programming)

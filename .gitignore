@@ -16,3 +16,5 @@ org-roam.db
 .org-id-locations
 bookmarks
 session.*
+eshell/
+
