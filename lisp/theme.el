@@ -53,7 +53,7 @@
 ;; (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 
 
-(setq dashboard-startup-banner "~/.emacs.d/image/pyrmacs_transparent.png")
+(setq dashboard-startup-banner "~/.emacs.d/image/pyr-bubble.png")
 (setq dashboard-image-banner-max-width 512)
 ;; this makes the buffer on emacsclient be dashboard
 (setq dashboard-display-icons-p t)     ; display icons on both GUI and terminal
