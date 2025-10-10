@@ -19,6 +19,10 @@
 (use-package rust-mode :straight t)
 ;; Hook to load lsp-mode when entering a rust file
 (add-hook 'rust-mode-hook #'lsp)
+
+;; Go
+(use-package go-mode :straight t)
+(add-hook 'go-mode-hook #'lsp)
 ;;---------
 ;; Nix
 (use-package nix-mode
