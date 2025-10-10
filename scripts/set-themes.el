@@ -16,7 +16,7 @@
 (defun set-font ()
   "Check host name and return font."
   (if (eq system-type 'darwin)
-        (progn "FiraCode Nerd Font Mono")
+        (progn "Maple Mono NF CN")
         (progn "Maple Mono NF CN")))
 ;; only used if I set global theme through nixos
   (defun set-theme()
