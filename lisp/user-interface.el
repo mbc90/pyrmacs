@@ -36,6 +36,7 @@
   ;; Optional customizations
   :custom
   (corfu-auto t)
+  (corfu-auto-delay 0)
   ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
@@ -47,7 +48,8 @@
   ;; :hook ((prog-mode . corfu-mode)
   ;;        (shell-mode . corfu-mode)
   ;;        (eshell-mode . corfu-mode))
-
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
   :init
 
   ;; Recommended: Enable Corfu globally.  Recommended since many modes provide
@@ -57,8 +59,12 @@
 
   ;; Enable optional extension modes:
   (corfu-history-mode)
-  (corfu-popupinfo-mode)
-  )
+  (corfu-popupinfo-mode))
+;; add icons to corfu
+(use-package nerd-icons-corfu
+  :straight t
+  :ensure t
+  :after corfu)
 ;;Cape completion
 (use-package cape
   :straight t
@@ -103,6 +109,26 @@
 	doom-modeline-persp-name t
 	doom-modeline-persp-icon t))
 
+;; add indent guides
+(use-package indent-guide
+  :defer t
+  :straight t
+  :ensure t
+  :hook
+  (prog-mode . indent-guide-mode)  ;; Activate indent-guide in programming modes.
+  :config
+  (setq indent-guide-char "│"))
+
+(use-package nerd-icons-dired
+  :straight t
+  :ensure t                               ;; Ensure the package is installed.
+  :defer t                                ;; Load the package only when needed to improve startup time.
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+(use-package dired
+  :custom
+  (setf dired-listing-switches "-lah --group-directories-first") ;; group directories and make dired a bit more readable. Does not work on MacOS. need GNU ls
+  (setf dired-kill-when-opening-new-dired-buffer t)) ;; stop dired from opening so many buffers
 ;; Emacs minibuffer configurations.
 (use-package emacs
   :custom
