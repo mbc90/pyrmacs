@@ -17,4 +17,5 @@ org-roam.db
 bookmarks
 session.*
 eshell/
+url/
 
