@@ -60,11 +60,6 @@
   ;; Enable optional extension modes:
   (corfu-history-mode)
   (corfu-popupinfo-mode))
-;; add icons to corfu
-(use-package nerd-icons-corfu
-  :straight t
-  :ensure t
-  :after corfu)
 ;;Cape completion
 (use-package cape
   :straight t
@@ -92,6 +87,7 @@
   ;; package.
   (marginalia-mode))
 
+
 ;; Navigiation packages
 (use-package avy
   :straight t)
@@ -107,6 +103,7 @@
   (setq doom-modeline-height 30
 	doom-modeline-bar-width 5
 	doom-modeline-persp-name t
+	doom-modeline-icon t
 	doom-modeline-persp-icon t))
 
 ;; add indent guides
@@ -118,17 +115,52 @@
   (prog-mode . indent-guide-mode)  ;; Activate indent-guide in programming modes.
   :config
   (setq indent-guide-char "│"))
+;; Pulsar: highlights last action to make it easier to understand what you did
+(use-package pulsar
+  :defer t
+  :straight t
+  :ensure t
+  :hook
+  (after-init . pulsar-global-mode)
+  :config
+  (setq pulsar-pulse t)
+  (setq pulsar-delay 0.025)
+  (setq pulsar-iterations 10)
+  (setq pulsar-face 'evil-ex-lazy-highlight)
+  (add-to-list 'pulsar-pulse-functions 'evil-scroll-down)
+  (add-to-list 'pulsar-pulse-functions 'evil-yank)
+  (add-to-list 'pulsar-pulse-functions 'evil-yank-line)
+  (add-to-list 'pulsar-pulse-functions 'evil-delete)
+  (add-to-list 'pulsar-pulse-functions 'evil-delete-line)
+  (add-to-list 'pulsar-pulse-functions 'evil-jump-item))
 
+(use-package dired
+  :custom
+  (setf dired-listing-switches "-lah --group-directories-first") ;; group directories and make dired a bit more readable. Does not work on MacOS. need GNU ls
+  (setf dired-kill-when-opening-new-dired-buffer t)) ;; stop dired from opening so many buffers
+
+;; Nerd Icons for all my stuff
+;; add icons to corfu
+(use-package nerd-icons-corfu
+  :straight t
+  :ensure t
+  :after corfu)
 (use-package nerd-icons-dired
   :straight t
   :ensure t                               ;; Ensure the package is installed.
   :defer t                                ;; Load the package only when needed to improve startup time.
   :hook
   (dired-mode . nerd-icons-dired-mode))
-(use-package dired
-  :custom
-  (setf dired-listing-switches "-lah --group-directories-first") ;; group directories and make dired a bit more readable. Does not work on MacOS. need GNU ls
-  (setf dired-kill-when-opening-new-dired-buffer t)) ;; stop dired from opening so many buffers
+(use-package nerd-icons-completion
+  :straight t
+  :ensure t
+  :after (:all nerd-icons marginalia)
+  :config
+  (nerd-icons-completion-mode)
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
+
+
+
 ;; Emacs minibuffer configurations.
 (use-package emacs
   :custom

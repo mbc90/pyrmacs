@@ -23,9 +23,20 @@
 ;; Go
 (use-package go-mode :straight t)
 (add-hook 'go-mode-hook #'lsp)
+
+;; swift
+(use-package swift-mode :straight t)
+(use-package lsp-sourcekit
+  :straight t
+  :defer t
+  :after lsp-mode)
+(add-hook 'swift-mode-hook #'lsp)
+
 ;;---------
 ;; Nix
 (use-package nix-mode
   :straight t
   :mode "\\.nix\\'")
+
+
 (provide 'programming)

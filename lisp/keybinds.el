@@ -16,7 +16,15 @@
   :config
   (evil-collection-init))
 
-
+;; EVIL surround allos changing the surrounding char.
+;; Example: 'Hello, World!' -> cs'" "Hello,World!"
+;; cs<current char><new char>
+(use-package evil-surround
+  :ensure t
+  :straight t
+  :after evil-collection
+  :config
+  (global-evil-surround-mode 1))
 ;; Keybindings 
 (keymap-global-set "C-;" #'jinx-correct)
 ;; which key
