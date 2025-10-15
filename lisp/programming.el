@@ -33,6 +33,13 @@
 (add-hook 'swift-mode-hook #'lsp)
 
 ;;---------
+;; Dockerfiles
+ (use-package dockerfile-mode
+   :straight t
+   :defer t
+   :config
+   (setq dockerfile-docker-command "podman"))
+(add-hook 'dockerfile-mode-hook #'lsp)
 ;; Nix
 (use-package nix-mode
   :straight t
