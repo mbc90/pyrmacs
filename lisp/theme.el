@@ -21,9 +21,9 @@
 (use-package catppuccin-theme
   :straight t)
 ;; call set theme function
-(add-hook 'after-init-hook (lambda()(load-theme 'catppuccin t)))
-(setq catppuccin-flavor 'frappe)
-(catppuccin-reload)
+(add-hook 'after-init-hook (lambda()(load-theme 'doom-one t)))
+;; (setq catppuccin-flavor 'frappe)
+;; (catppuccin-reload)
 ;; font
 (set-face-attribute 'default nil :font (set-font) :height (set-font-height))
 
