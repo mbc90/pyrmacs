@@ -21,7 +21,7 @@
 (use-package catppuccin-theme
   :straight t)
 ;; call set theme function
-(add-hook 'after-init-hook (lambda()(load-theme 'doom-one t)))
+(add-hook 'after-init-hook (lambda()(load-theme 'doom-Iosvkem t)))
 ;; (setq catppuccin-flavor 'frappe)
 ;; (catppuccin-reload)
 ;; font
@@ -55,6 +55,7 @@
 
 (setq dashboard-startup-banner "~/.emacs.d/image/pyr-bubble.png")
 (setq dashboard-image-banner-max-width 512)
+
 ;; this makes the buffer on emacsclient be dashboard
 (setq dashboard-display-icons-p t)     ; display icons on both GUI and terminal
 (setq dashboard-icon-type 'nerd-icons) ; use `nerd-icons' package
