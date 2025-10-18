@@ -39,7 +39,6 @@
    :defer t
    :config
    (setq dockerfile-docker-command "podman"))
-(add-hook 'dockerfile-mode-hook #'lsp)
 ;; Nix
 (use-package nix-mode
   :straight t
