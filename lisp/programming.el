@@ -26,10 +26,13 @@
 
 ;; swift
 (use-package swift-mode :straight t)
+
 (use-package lsp-sourcekit
   :straight t
   :defer t
-  :after lsp-mode)
+  :after lsp-mode
+  :config
+  (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"))
 (add-hook 'swift-mode-hook #'lsp)
 
 ;;---------

@@ -21,7 +21,7 @@
 (use-package catppuccin-theme
   :straight t)
 ;; call set theme function
-(add-hook 'after-init-hook (lambda()(load-theme 'doom-Iosvkem t)))
+(add-hook 'after-init-hook (lambda()(load-theme 'doom-one t)))
 ;; (setq catppuccin-flavor 'frappe)
 ;; (catppuccin-reload)
 ;; font
