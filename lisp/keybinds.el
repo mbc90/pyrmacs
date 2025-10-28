@@ -72,6 +72,7 @@
     "ff" '(find-file :which-key "Find file")
     "fs" '(consult-line :which-key "Go to line")
     "fi" '(avy-goto-char-timer :which-key "Avy goto")
+    "fw" '(avy-goto-word-0 :which-key "Avy goto word")
     ;; Buffer stuff
     "b"  '(:ignore b :which-key "Buffer")
     "bb" '(consult-buffer :which-key "Switch Buffer")

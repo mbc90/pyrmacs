@@ -32,7 +32,8 @@
   :defer t
   :after lsp-mode
   :config
-  (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"))
+  (if (eq system-type 'darwin)
+      (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp")))
 (add-hook 'swift-mode-hook #'lsp)
 
 ;;---------
