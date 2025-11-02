@@ -36,6 +36,12 @@
       (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp")))
 (add-hook 'swift-mode-hook #'lsp)
 
+;; C
+(add-hook 'c-mode-hook #'lsp)
+
+;; Zig
+(use-package zig-mode :straight t)
+(add-hook 'zig-mode-hook #'lsp)
 ;;---------
 ;; Dockerfiles
  (use-package dockerfile-mode
