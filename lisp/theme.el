@@ -1,6 +1,6 @@
 ;;; Code: 
 (require 'set-themes)
-(setq font-lock-mode t)
+(setq global-font-lock-mode t)
 (use-package doom-themes
   :straight t
   :ensure t
