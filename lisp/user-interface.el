@@ -94,7 +94,8 @@
 (use-package treemacs
   :straight t)
 (use-package lsp-treemacs
-  :straight t)
+  :straight t
+  :ensure t)
 
 ;; modeline
 (use-package doom-modeline

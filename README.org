@@ -7,6 +7,10 @@ Along with the bloat of a bunch of packages with purposes I didn't have a clue o
 way to get confused. I replaced a lot of packages and tried to put them in fewer files.
 
 * Important Installation Steps
+** Getting Icons to work properly
+Install a proper nerd font, I use [[https://github.com/subframe7536/Maple-font][Maple Mono NF CN]]. Can be changed in the =set-theme.el= script in the =scripts= directory.
+Run this command =M-x nerd-icons-install-fonts=
+And make sure =Material Icons= are installed for lsp-mode-breadline to display object separators correctly
 ** Jinx
 Jinx can be installed from GNU ELPA or MELPA directly with =package-install=.
 
