@@ -93,6 +93,16 @@
     ;; Git stuff
     "g" '(:ignore g :which-key "Git")
     "g g" '(magit-status :which-key "Magit Status")
+    ;; treemacs
+    "p" '(:ignore g :which-key "Treemacs/Projects")
+    "p t" '(treemacs :which-key "Toggle Treemacs")
+    "p a" '(treemacs-add-project-to-workspace :which-key "Add project to treemacs")
+    "p r" '(treemacs-remove-project-from-workspace :which-key "Remove project from Treemacs")
+    "p w" '(:ignore w :which-key "Treemacs Workspaces")
+    "p w a" '(treemacs-create-workspace :which-key "Create Workspace")
+    "p w n" '(treemacs-next-workspace :which-key "Next Workspace")
+    "p w s" '(treemacs-switch-workspace :which-key "Switch Worksapce")
+
     ))
 
 
