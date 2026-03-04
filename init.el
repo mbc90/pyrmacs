@@ -37,3 +37,4 @@
 ;; Programming Stuff
 (require 'programming)
 (put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)

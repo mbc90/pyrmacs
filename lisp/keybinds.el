@@ -73,6 +73,7 @@
     "fs" '(consult-line :which-key "Go to line")
     "fi" '(avy-goto-char-timer :which-key "Avy goto")
     "fw" '(avy-goto-word-0 :which-key "Avy goto word")
+    "fg" '(consult-grep :which-key "Grep Project")
     ;; Buffer stuff
     "b"  '(:ignore b :which-key "Buffer")
     "bb" '(consult-buffer :which-key "Switch Buffer")

@@ -163,6 +163,8 @@
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
 
+  ;; Stop word wrap
+  (setq-default truncate-lines t)
 
 ;; Emacs minibuffer configurations.
 (use-package emacs
