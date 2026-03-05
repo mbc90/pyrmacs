@@ -13,8 +13,8 @@
   (setq doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
+  (with-eval-after-load 'org
+  (doom-themes-org-config)))
 (use-package nerd-icons
   :straight t)
 (require 'nerd-icons)
@@ -22,7 +22,7 @@
 (use-package catppuccin-theme
   :straight t)
 ;; call set theme function
-(add-hook 'after-init-hook (lambda()(load-theme 'doom-one t)))
+(load-theme 'doom-one t)
 ;; (setq catppuccin-flavor 'frappe)
 ;; (catppuccin-reload)
 ;; font
@@ -69,43 +69,61 @@
 (use-package hl-todo :straight t)
 (setq global-hl-todo-mode t)
 (use-package ob-mermaid :straight t)
-;; (use-package org-present :straight t)
-;; (use-package visual-fill-column :straight t)
+(use-package org-tree-slide
+  :straight t
+  :defer t)
+(use-package moom
+  :straight t
+  :config
+  (moom-mode 1)
+  (with-eval-after-load 'org
+    (add-hook 'moom-font-after-resize-hook #'org-redisplay-inline-images)))
+(use-package visual-fill-column :straight t)
 
+(setq visual-fill-column-width 110
+      visual-fill-column-center-text t)
 
-;; ;; Configure fill width
-;; (setq visual-fill-column-width 110
-;;       visual-fill-column-center-text t)
+(defvar my/org-present-remappings nil)
 
-;; (defun my/org-present-start ()
-;;   ;; Center the presentation and wrap lines
-;;   (visual-fill-column-mode 1)
-;;   (visual-line-mode 1)
-;;   ;; Tweak font sizes
-;; (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
-;;                                    (header-line (:height 4.0) variable-pitch)
-;;                                    (org-document-title (:height 1.75) org-document-title)
-;;                                    (org-code (:height 1.55) org-code)
-;;                                    (org-verbatim (:height 1.55) org-verbatim)
-;;                                    (org-block (:height 1.25) org-block)
-;;                                    (org-block-begin-line (:height 0.7) org-block))))
+(defun my/org-present-start ()
+  (setq-local visual-fill-column-width 110)
+  (setq-local visual-fill-column-center-text t)
+  (setq cursor-type nil)
+  (org-tree-slide-presentation-profile) ;; hides drawers, blank lines between slides
+  (visual-fill-column-mode 1)
+  (visual-line-mode 1)
+  (org-display-inline-images)
+  (display-line-numbers-mode -1)
+  (run-with-timer 0.3 nil
+    (lambda ()
+      (setq my/org-present-remappings
+            (list
+             (face-remapping-add-relative 'default '(:height 2.0) 'variable-pitch)
+             (face-remapping-add-relative 'header-line '(:height 4.0) 'variable-pitch)
+             (face-remapping-add-relative 'org-document-title '(:height 1.75))
+             (face-remapping-add-relative 'org-code '(:height 1.55))
+             (face-remapping-add-relative 'org-verbatim '(:height 1.55))
+             (face-remapping-add-relative 'org-block '(:height 1.25))
+             (face-remapping-add-relative 'org-block-begin-line '(:height 0.7))))
+      (font-lock-flush))))
 
-;; (defun my/org-present-end ()
-;;   ;; Stop centering the document
-;;   (visual-fill-column-mode 0)
-;;   (visual-line-mode 0)
-;;   ;; Reset font customizations
-;; (setq-local face-remapping-alist '((default variable-pitch default))))
+(defun my/org-present-end ()
+  (visual-fill-column-mode 0)
+  (visual-line-mode 0)
+  (setq cursor-type t)
+  (org-remove-inline-images)
+  (display-line-numbers-mode 1)
+  (dolist (cookie my/org-present-remappings)
+    (face-remapping-remove-relative cookie))
+  (setq my/org-present-remappings nil))
 
-;; ;; Register hooks with org-present
-;; (add-hook 'org-present-mode-hook 'my/org-present-start)
-;; (add-hook 'org-present-mode-quit-hook 'my/org-present-end)
-
+(add-hook 'org-tree-slide-play-hook 'my/org-present-start)
+(add-hook 'org-tree-slide-stop-hook 'my/org-present-end)
 ;; org babel stuff
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((shell . t)
-   (R . y)
+   (R . t)
    (scheme . t)
    (mermaid . t)))
 ;; add bullets instead of asteriks 
@@ -150,5 +168,7 @@
 ;; start rainbow-delimiter mode in all programming modes
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+
+; force org buffers to re-fontify with new faces
 (provide 'theme)
 
