@@ -83,7 +83,12 @@
     "b]" '(next-buffer :which-key "Next Buffer")
     ;; org mode things
     "o" '(:ignore o :which-key "Org mode")
-    "op" '(org-latex-export-to-pdf :which-key "Export to PDF")
+    "os" '(org-tree-slide-mode :which-key "Presentation mode")
+    "on" '(org-tree-slide-move-next-tree :which-key "Next Slide")
+    "op" '(org-tree-slide-move-previous-tree :which-key "Prev Slide")
+    "om" '(moom-toggle-frame-maximized :which-key "Maximize for presentation")
+    "oe" '(:ignore e :which-key "Export")
+    "oep" '(org-latex-export-to-pdf :which-key "Export to pdf")
     "or" '(:ignore r :which-key "Org Roam")
     "ort" '(org-roam-buffer-toggle :which-key "Buffer toggle")
     "orf" '(org-roam-node-find :which-key "Node Find")
