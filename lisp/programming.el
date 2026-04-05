@@ -1,10 +1,10 @@
 ;;;Lsp and other stuff
 (use-package lsp-mode
   :straight t
+  :init 
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :custom
   (lsp-completion-provider :none) ;; use corfu, not company
-  :init
-  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :config
   (lsp-enable-which-key-integration t)
   :commands
@@ -54,5 +54,14 @@
   :straight t
   :mode "\\.nix\\'")
 
+;; Arduino
+(use-package arduino-cli-mode
+  :straight t
+  :ensure t
+  ;; :hook arduino-mode
+  :mode "\\.ino\\'"
+  :custom
+  (arduino-cli-warnings 'all)
+  (arduino-cli-verify t))
 
 (provide 'programming)
