@@ -36,5 +36,7 @@
 (require 'system)
 ;; Programming Stuff
 (require 'programming)
+;; Org stuff
+(require 'org-config)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
