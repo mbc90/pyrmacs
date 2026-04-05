@@ -1,7 +1,15 @@
 ;; Org-mode stuff 
+;; org-agenda
+(setq org-agenda-files '("~/org/"))
+(setq org-todo-keywords
+ '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELLED")))
+(setq org-log-done 'time)               ;; timestamp when you mark something DONE
+(setq org-agenda-start-on-weekday 1)
 (use-package hl-todo :straight t)
 (setq global-hl-todo-mode t)
+
 (use-package ob-mermaid :straight t)
+
 (use-package org-tree-slide
   :straight t
   :defer t)
@@ -64,5 +72,28 @@
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (add-hook 'org-mode-hook 'visual-line-mode)
+
+;; Org roam
+(use-package org-roam
+  :straight t
+  :custom
+  (org-roam-directory "~/org/roam/")
+  (org-roam-completion-everywhere t)
+  :config
+  (org-roam-db-autosync-mode))
+(use-package org-roam-ui
+  :straight t
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t       ;; match your Emacs theme
+        org-roam-ui-follow t           ;; graph follows your cursor
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start nil))
+(use-package consult-org-roam
+  :straight t
+  :after org-roam
+  :init (consult-org-roam-mode 1)
+  :config
+  (setq consult-org-roam-grep-func #'consult-grep))
 
 (provide 'org-config)
