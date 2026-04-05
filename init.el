@@ -16,6 +16,8 @@
   (load bootstrap-file nil 'nomessage))
 (straight-use-package 'use-package)
 ;;--------------------------
+;; Make sure srtaight loads new org version
+ (straight-use-package 'org)
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;; stop emacs backup files

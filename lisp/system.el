@@ -13,7 +13,10 @@
 ;; Jinx spell check
 (use-package jinx :straight t)
 
-
+;; Org-roam
+(use-package org-roam :straight t)
+(setq org-roam-directory (file-truename "~/org-roam"))
+(org-roam-db-autosync-mode)
 
 ;; Alternative 2: Enable Jinx per mode
 (dolist (hook '(org-mode-hook text-mode-hook conf-mode-hook))
