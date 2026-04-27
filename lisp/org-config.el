@@ -1,6 +1,8 @@
 ;; Org-mode stuff 
 ;; org-agenda
-(setq org-agenda-files '("~/org/"))
+(setq org-agenda-files
+      (directory-files-recursively "~/org" "\\.org$"))
+
 (setq org-todo-keywords
  '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELLED")))
 (setq org-log-done 'time)               ;; timestamp when you mark something DONE
@@ -8,6 +10,13 @@
 (use-package hl-todo :straight t)
 (setq global-hl-todo-mode t)
 
+;; Give me notifications
+(require 'appt)
+(appt-activate 1)
+(org-agenda-to-appt) ;; Sync the TODOs
+
+;; Auto refresh when agenda changes
+(add-hook 'org-agenda-finalize-hook 'org-agenda-to-appt)
 (use-package ob-mermaid :straight t)
 
 (use-package org-tree-slide
@@ -81,6 +90,7 @@
   (org-roam-completion-everywhere t)
   :config
   (org-roam-db-autosync-mode))
+
 (use-package org-roam-ui
   :straight t
   :after org-roam
@@ -89,11 +99,25 @@
         org-roam-ui-follow t           ;; graph follows your cursor
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start nil))
+
 (use-package consult-org-roam
   :straight t
   :after org-roam
   :init (consult-org-roam-mode 1)
   :config
   (setq consult-org-roam-grep-func #'consult-grep))
+
+;; Org roam properties search helpers
+(cl-defmethod org-roam-node-ECO ((node org-roam-node))
+  (or (cdr (assoc "ECO" (org-roam-node-properties node) #'string-equal)) ""))
+
+(cl-defmethod org-roam-node-SW ((node org-roam-node))
+ (or (cdr (assoc "SW" (org-roam-node-properties node) #'string-equal)) ""))
+
+(setq org-roam-node-display-template
+      (concat "${title:30} "
+	      (propertize "${tags:25} " 'face 'org-tag)
+              (propertize " ${ECO:10}" 'face 'org-tag)
+              (propertize " ${SW:10} "  'face 'org-tag)))
 
 (provide 'org-config)
