@@ -1,0 +1,12 @@
+* Feeds                                     :elfeed:
+** News                                     :news:
+*** https://feeds.bbci.co.uk/news/rss.xml   :bbc:
+** Tech                                     :tech:
+*** https://hnrss.org/frontpage             :hackernews:
+*** https://www.phoronix.com/rss.php        :phoronix:
+** Emacs                                    :emacs:
+*** https://planet.emacslife.com/atom.xml  :planet:
+** Jenkins                                  :Jenkins:
+*** http://eng-vm-bartz-26:8080/job/P2BoardTest-Pipeline/rssAll :p2boardtest:
+*** http://eng-vm-bartz-26:8080/job/GreenerOx-Pipeline/rssAll   :greenerox:
+*** http://eng-vm-bartz-26:8080/job/Inspire-Pipeline/rssAll     :inspire:

@@ -97,10 +97,10 @@
     ;; reload
     "r "    '(:ignore r :which-key "reload")
     "r r"   '(eval-buffer :which-key "reload config")
-    ;; Git   stuff
+    ;; Git stuff
     "g"     '(:ignore g :which-key "Git")
     "g g"   '(magit-status :which-key "Magit Status")
-    ;; tre  emacs
+    ;; treemacs
     "p"     '(:ignore g :which-key "Treemacs/Projects")
     "p t"   '(treemacs :which-key "Toggle Treemacs")
     "p a"   '(treemacs-add-project-to-workspace :which-key "Add project to treemacs")
@@ -109,6 +109,11 @@
     "p w a" '(treemacs-create-workspace :which-key "Create Workspace")
     "p w n" '(treemacs-next-workspace :which-key "Next Workspace")
     "p w s" '(treemacs-switch-workspace :which-key "Switch Worksapce")
+
+    ;; RSS/ Elfeed
+    "e" '(:ignore e :which-key "Elfeed/RSS")
+    "e e" '(elfeed :which-key "Open Elfeed")
+    "e u" '(elfeed-update :which-key "Update Feeds")
 
     ))
 

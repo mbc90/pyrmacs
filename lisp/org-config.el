@@ -120,4 +120,19 @@
               (propertize " ${ECO:10}" 'face 'org-tag)
               (propertize " ${SW:10} "  'face 'org-tag)))
 
+;; RSS stuff
+;; Elfeed RSS reader
+(use-package elfeed
+  :straight t
+  :custom
+  (elfeed-search-filter "@1-week-ago +unread")
+  (elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)))
+
+;; Manage feeds in an org file
+(use-package elfeed-org
+  :straight t
+  :after elfeed
+  :config
+  (setq rmh-elfeed-org-files (list "~/.emacs.d/feeds.org"))
+  (elfeed-org))
 (provide 'org-config)
