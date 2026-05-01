@@ -14,7 +14,8 @@
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (with-eval-after-load 'org
-  (doom-themes-org-config)))
+  (doom-themes-org-config))
+)
 (use-package nerd-icons
   :straight t)
 (require 'nerd-icons)
@@ -27,6 +28,7 @@
 ;; (catppuccin-reload)
 ;; font
 (set-face-attribute 'default nil :font (set-font) :height (set-font-height))
+(set-face-attribute 'variable-pitch nil :family "Maple Mono")
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -71,13 +73,13 @@
   :straight t
   :config
   ;; enable all ligatures
-  (ligature-set-ligatures 't '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+  (ligature-set-ligatures 't '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "||=" "||>"
                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                                       "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+                                       "~>" "~-" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
@@ -89,6 +91,7 @@
                                        "<~~" "<~" "~>" "~~>" "::" ":::" "==" "!=" "===" "!=="
                                        ":=" ":-" ":+" "<*" "<*>" "*>" "<|" "<|>" "|>" "+:" "-:" "=:" "<******>" "++" "+++"))
   (global-ligature-mode t))
+
 
 ;;org-tempo makes it faster to input source blocks
 (require 'org-tempo)
@@ -106,7 +109,5 @@
 ;; start rainbow-delimiter mode in all programming modes
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-
-; force org buffers to re-fontify with new faces
 (provide 'theme)
 

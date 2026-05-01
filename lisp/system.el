@@ -46,6 +46,9 @@
 
 ;; tramp for ssh file editing
 (setq tramp-default-method "ssh")
+
 ;; Direnv - best for flake/podman devolper enviroments
 
+
+;;(setq-default buffer-file-coding-system 'utf-8-dos)
 (provide 'system)

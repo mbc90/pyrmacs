@@ -96,7 +96,7 @@
     "o a"   '(org-agenda :which-key "Org Agenda")
     ;; reload
     "r "    '(:ignore r :which-key "reload")
-    "r r"   '(eval-buffer :which-key "reload config")
+    "r r"   '(eval-buffer "~/.emacs.d/init.el" :which-key "reload config")
     ;; Git stuff
     "g"     '(:ignore g :which-key "Git")
     "g g"   '(magit-status :which-key "Magit Status")
