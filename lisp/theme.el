@@ -21,7 +21,8 @@
 (require 'nerd-icons)
 
 (use-package catppuccin-theme
-  :straight t)
+  :straight t
+  :defer t)
 ;; call set theme function
 (load-theme 'doom-one t)
 ;; (setq catppuccin-flavor 'frappe)
@@ -90,6 +91,7 @@
                                        "<==" "<===" "<=" "=>" "=>>" "==>" "===>" ">=" "<=>" "<==>" "<===>" "<====>" "<!---"
                                        "<~~" "<~" "~>" "~~>" "::" ":::" "==" "!=" "===" "!=="
                                        ":=" ":-" ":+" "<*" "<*>" "*>" "<|" "<|>" "|>" "+:" "-:" "=:" "<******>" "++" "+++"))
+  (ligature-set-ligatures 'prog-mode '("***" "**"))
   (global-ligature-mode t))
 
 

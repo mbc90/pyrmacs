@@ -16,16 +16,16 @@
                 (assoc-delete-all 'lsp-capf completion-category-defaults))))
 
 ;; Rust
-(use-package rust-mode :straight t)
+(use-package rust-mode :straight t :defer t)
 ;; Hook to load lsp-mode when entering a rust file
 (add-hook 'rust-mode-hook #'lsp)
 
 ;; Go
-(use-package go-mode :straight t)
+(use-package go-mode :straight t :defer t)
 (add-hook 'go-mode-hook #'lsp)
 
 ;; swift
-(use-package swift-mode :straight t)
+(use-package swift-mode :straight t :defer t)
 
 (use-package lsp-sourcekit
   :straight t
@@ -40,7 +40,7 @@
 (add-hook 'c-mode-hook #'lsp)
 
 ;; Zig
-(use-package zig-mode :straight t)
+(use-package zig-mode :straight t :defer t)
 (add-hook 'zig-mode-hook #'lsp)
 ;;---------
 ;; Dockerfiles
@@ -63,5 +63,8 @@
   :custom
   (arduino-cli-warnings 'all)
   (arduino-cli-verify t))
+
+;; Magit
+(use-package magit :straight t :commands magit-status)
 
 (provide 'programming)

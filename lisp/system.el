@@ -7,8 +7,6 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
-;; Magit
-(use-package magit :straight t)
 
 ;; Jinx spell check
 (use-package jinx :straight t)
@@ -20,10 +18,11 @@
   (add-hook hook #'jinx-mode))
 
 ;; Eat for term
-(use-package eat :straight t)
+(use-package eat :straight t :defer t)
 
 (use-package vterm
-  :straight t)
+  :straight t
+  :defer t)
 (use-package vterm-toggle
   :straight t
   :after vterm

@@ -92,10 +92,12 @@
 (use-package avy
   :straight t)
 (use-package treemacs
-  :straight t)
+  :straight t
+  :defer t)
 (use-package lsp-treemacs
   :straight t
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; modeline
 (use-package doom-modeline

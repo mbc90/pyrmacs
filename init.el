@@ -16,6 +16,8 @@
   (load bootstrap-file nil 'nomessage))
 (straight-use-package 'use-package)
 ;;--------------------------
+
+(setq use-package-compute-statistics t)
 (straight-use-package 'org)
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)

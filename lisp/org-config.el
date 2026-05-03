@@ -13,7 +13,7 @@
 ;; Give me notifications
 (require 'appt)
 (appt-activate 1)
-(org-agenda-to-appt) ;; Sync the TODOs
+(add-hook 'emacs-startup-hook #'org-agenda-to-appt) ;; Sync the TODOs
 
 ;; Auto refresh when agenda changes
 (add-hook 'org-agenda-finalize-hook 'org-agenda-to-appt)
@@ -64,6 +64,11 @@
 ;; Org roam
 (use-package org-roam
   :straight t
+  :defer t
+  :commands
+  (org-roam-node-find
+   org-roam-node-insert
+   org-roam-buffer-toggle)
   :custom
   (org-roam-directory "~/org/roam/")
   (org-roam-completion-everywhere t)
@@ -87,22 +92,23 @@
   (setq consult-org-roam-grep-func #'consult-grep))
 
 ;; Org roam properties search helpers
-(cl-defmethod org-roam-node-ECO ((node org-roam-node))
-  (or (cdr (assoc "ECO" (org-roam-node-properties node) #'string-equal)) ""))
+(with-eval-after-load 'org-roam
+  (cl-defmethod org-roam-node-ECO ((node org-roam-node))
+    (or (cdr (assoc "ECO" (org-roam-node-properties node) #'string-equal)) ""))
 
-(cl-defmethod org-roam-node-SW ((node org-roam-node))
- (or (cdr (assoc "SW" (org-roam-node-properties node) #'string-equal)) ""))
+  (cl-defmethod org-roam-node-SW ((node org-roam-node))
+    (or (cdr (assoc "SW" (org-roam-node-properties node) #'string-equal)) ""))
 
-(setq org-roam-node-display-template
-      (concat "${title:30} "
-	      (propertize "${tags:25} " 'face 'org-tag)
-              (propertize " ${ECO:10}" 'face 'org-tag)
-              (propertize " ${SW:10} "  'face 'org-tag)))
-
+  (setq org-roam-node-display-template
+        (concat "${title:30} "
+                (propertize "${tags:25} " 'face 'org-tag)
+                (propertize " ${ECO:10}" 'face 'org-tag)
+                (propertize " ${SW:10} " 'face 'org-tag))))
 ;; RSS stuff
 ;; Elfeed RSS reader
 (use-package elfeed
   :straight t
+  :defer t
   :custom
   (elfeed-search-filter "@1-week-ago +unread")
   (elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)))
