@@ -89,14 +89,15 @@
     "o m"   '(moom-toggle-frame-maximized :which-key "Maximize for presentation")
     "o e"   '(:ignore e :which-key "Export")
     "o e p" '(org-latex-export-to-pdf :which-key "Export to pdf")
+    "o e t" '(org-pandoc-export-to-typst-pdf :which-key "Export to Typst pdf")
     "o r "  '(:ignore r :which-key "Org Roam")
-    "o r t" '(org-roam-buffer-toggle :which-key "Buffer toggle")
+    "o r t" '(org-roam-buffer-toggle :which-key "Buffer Toggle")
     "o r f" '(org-roam-node-find :which-key "Node Find")
     "o r i" '(org-roam-node-insert :which-key "Node Insert")
     "o a"   '(org-agenda :which-key "Org Agenda")
     ;; reload
-    "r "    '(:ignore r :which-key "reload")
-    "r r"   '(eval-buffer "~/.emacs.d/init.el" :which-key "reload config")
+    "r "    '(:ignore r :which-key "Reload")
+    "r r"   '(eval-buffer "~/.emacs.d/init.el" :which-key "Reload Config")
     ;; Git stuff
     "g"     '(:ignore g :which-key "Git")
     "g g"   '(magit-status :which-key "Magit Status")

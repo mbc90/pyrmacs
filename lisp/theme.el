@@ -57,7 +57,8 @@
 ;; (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 
 
-(setq dashboard-startup-banner "~/.emacs.d/image/pyr-bubble.png")
+(setq dashboard-startup-banner
+      (locate-file "pyr-bubble.png" image-load-path))
 (setq dashboard-image-banner-max-width 512)
 
 ;; this makes the buffer on emacsclient be dashboard
