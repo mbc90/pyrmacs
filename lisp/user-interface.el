@@ -29,6 +29,9 @@
   :straight t
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :init)
+(use-package consult-lsp
+  :straight t
+  :after(consult lsp-mode))
 
 ;; Corfu Completion 
 (use-package corfu
