@@ -176,91 +176,17 @@
 
 ;; Latex export stuff
 ;;LaTeX / PDF Export Styling
- (with-eval-after-load 'ox-latex
- 
-   ;; Use a nicer document class
-   (setq org-latex-default-class "article")
- 
-   (add-to-list 'org-latex-classes
-     '("article"
-       "\\documentclass[11pt,a4paper]{article}
- \\usepackage[margin=1in]{geometry}
- \\usepackage{parskip}          % space between paragraphs instead of indent
- \\usepackage[expansion=false]{microtype} % better text justification
- \\usepackage{xcolor}
- \\usepackage{fancyhdr}
- \\usepackage{titlesec}
- \\usepackage{listings}         % code blocks
- \\usepackage[T1]{fontenc}
-%  \\usepackage{lmodern}
- \\usepackage{mdframed}         % framed code blocks
- 
- % Header / Footer
- \\pagestyle{fancy}
- \\fancyhf{}
- \\rhead{\\thepage}
- \\lhead{\\leftmark}
- 
- % Section title style
- \\titleformat{\\section}{\\large\\bfseries}{\\thesection}{1em}{}[\\titlerule]
- \\titleformat{\\subsection}{\\bfseries}{\\thesubsection}{1em}{}
- 
- % Code block styling
- \\lstset{
-   basicstyle=\\ttfamily\\small,
-   breaklines=true,
-   frame=single,
-   backgroundcolor=\\color{gray!10},
-   keywordstyle=\\color{blue!70},
-   commentstyle=\\color{green!50!black},
-   stringstyle=\\color{red!60},
-   numbers=left,
-   columns=fixed,
-   keepspaces=true,
-   numberstyle=\\tiny\\color{gray},
-   numbersep=5pt
- }
- 
- \\lstdefinelanguage{diff}{
-   morecomment=[f][\\color{red!60}]-,
-   morecomment=[f][\\color{green!50!black}]+,
-   morecomment=[f][\\color{gray}]{@@},
-   morecomment=[f][\\color{gray!50}]{---},
-   morecomment=[f][\\color{gray!50}]{+++},
- }
- "
- 
-       ("\\section{%s}" . "\\section*{%s}")
-       ("\\subsection{%s}" . "\\subsection*{%s}")
-       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
- 
-   ;; Use listings for src blocks (styled above)
-   (setq org-latex-listings 'listings)
- 
-   ;; Tell listings which language maps to which
-   (setq org-latex-listings-options
-         '(("basicstyle" "\\ttfamily\\small")
-           ("breaklines" "true")))
- 
-   ;; Better PDF engine (needs xelatex installed)
-   (setq org-latex-pdf-process
-         '("pdflatex -interaction nonstopmode -output-directory %o %f"
-           "pdflatex -interaction nonstopmode -output-directory %o %f"
-           "pdflatex -interaction nonstopmode -output-directory %o %f")))
- 
-(use-package ox-pandoc :straight t)
-(setq org-pandoc-options-for-latex-pdf
-      '((pdf-engine . "xelatex")
-        (template . "zosmac")
-        (table-of-contents . t)
-        (number-sections . t)
-        (toc-depth . 3)
-	(standalone . t)))
-(setq org-pandoc-options-for-typst-pdf
-      `((template . ,(locate-file "zosmac.typ" load-path))
-	(table-of-contents . t)
-	(toc-depth . 3)
-	(number-sections . t)
-	(lua-filter . ,(locate-file "org-todo.lua" load-path))))
-(setq org-pandoc-output-file "~/org/exports/")
+
+(use-package ox-typst
+  :straight t
+  :after org)
+(with-eval-after-load 'ox-typst
+  (setq org-typst-template
+        (lambda (contents info)
+          (concat
+           (with-temp-buffer
+             (insert-file-contents (locate-file "zosmac.typ" load-path))
+             (buffer-string))
+           "\n"
+           contents))))
 (provide 'org-config)

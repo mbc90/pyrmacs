@@ -90,7 +90,7 @@
     "o m"   '(moom-toggle-frame-maximized :which-key "Maximize for presentation")
     "o e"   '(:ignore e :which-key "Export")
     "o e p" '(org-latex-export-to-pdf :which-key "Export to pdf")
-    "o e t" '(org-pandoc-export-to-typst-pdf :which-key "Export to Typst pdf")
+    "o e t" '(org-typst-export-to-pdf :which-key "Export to Typst pdf")
     "o r "  '(:ignore r :which-key "Org Roam")
     "o r t" '(org-roam-buffer-toggle :which-key "Buffer Toggle")
     "o r f" '(org-roam-node-find :which-key "Node Find")
