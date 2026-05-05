@@ -173,6 +173,13 @@
 
 (add-hook 'org-tree-slide-play-hook 'my/org-present-start)
 (add-hook 'org-tree-slide-stop-hook 'my/org-present-end)
+;; org babel stuff
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell   . t)
+   (R       . t)
+   (scheme  . t)
+   (mermaid . t)))
 
 ;; Latex export stuff
 ;;LaTeX / PDF Export Styling
