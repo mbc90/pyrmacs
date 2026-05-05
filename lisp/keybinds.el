@@ -73,7 +73,8 @@
     "f s"   '(consult-line :which-key "Go to line")
     "f i"   '(avy-goto-char-timer :which-key "Avy goto")
     "f w"   '(avy-goto-word-0 :which-key "Avy goto word")
-    "f g"   '(consult-grep :which-key "Grep Project")
+    "f r"   '(consult-ripgrep :which-key "Ripgrep Project")
+    "f g"   '(consult-git-grep :which-key "Git Grep Project")
     ;; Buffer stuff
     "b"     '(:ignore b :which-key "Buffer")
     "b b"   '(consult-buffer :which-key "Switch Buffer")

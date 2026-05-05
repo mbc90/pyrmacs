@@ -98,7 +98,11 @@
   :straight t
   :ensure t
   :defer t)
-
+(use-package treemacs-perspective ;;treemacs-perspective if you use perspective.el vs. persp-mode
+  :straight t
+  :after (treemacs perspective) ;;or perspective vs. persp-mode
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
 ;; modeline
 (use-package doom-modeline
   :straight t

@@ -262,4 +262,5 @@
 	(toc-depth . 3)
 	(number-sections . t)
 	(lua-filter . ,(locate-file "org-todo.lua" load-path))))
+(setq org-pandoc-output-file "~/org/exports/")
 (provide 'org-config)

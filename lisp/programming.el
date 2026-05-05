@@ -13,7 +13,7 @@
 (add-hook 'lsp-completion-mode-hook
   (lambda ()
     (setq-local completion-category-defaults
-                (assoc-delete-all 'lsp-capf completion-category-defaults))))
+		(assoc-delete-all 'lsp-capf completion-category-defaults))))
 
 ;; Rust
 (use-package rust-mode :straight t :defer t)
@@ -74,4 +74,18 @@
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
 
+;; Make emacs use tabs
+  (if (string-equal system-name "LT-C2C3CB4-2025")
+      (progn (setq-default indent-tabs-mode t)
+       (setq-default tab-width 4)
+       (setq-default c-basic-offset tab-width)))
+
+
+;; Perspective For better project management 
+(use-package perspective
+  :straight t
+  :custom
+  (persp-mode-prefix-key (kbd "C-c M-p"))
+  :init
+  (persp-mode))
 (provide 'programming)
