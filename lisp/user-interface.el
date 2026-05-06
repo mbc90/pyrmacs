@@ -31,6 +31,7 @@
   :init)
 (use-package consult-lsp
   :straight t
+  :defer t
   :after(consult lsp-mode))
 
 ;; Corfu Completion 
@@ -103,6 +104,7 @@
   :defer t)
 (use-package treemacs-perspective ;;treemacs-perspective if you use perspective.el vs. persp-mode
   :straight t
+  :defer t
   :after (treemacs perspective) ;;or perspective vs. persp-mode
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))

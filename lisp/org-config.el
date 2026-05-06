@@ -186,6 +186,7 @@
 
 (use-package ox-typst
   :straight t
+  :defer t
   :after org)
 (with-eval-after-load 'ox-typst
   (setq org-typst-template
